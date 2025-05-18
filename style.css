@@ -1,0 +1,344 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100%;
+    background: rgb(220,220,220);
+}
+
+.container_header{
+    height: 15vh;
+    width: 100%;
+    border-bottom: 3px solid white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: grey;
+    position: relative;
+     padding: 0 1rem; 
+    box-sizing: border-box;
+}
+
+
+header h1{
+    
+    
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 4em;
+    margin: 0;
+    text-align: center;
+}
+    
+
+@media (max-width: 640px){
+    header h1{
+        font-size: 3.2em;
+    }
+}  
+@media (max-width: 550px){
+    header h1{
+        font-size: 2.8em;
+    }
+}
+@media (max-width: 525px){
+    header h1{
+        font-size: 2.5em;
+    }
+}
+
+.login{
+    height: 5em;
+    width: 5em;
+    border: 2px solid white;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    
+    
+}
+
+
+/*.container{
+    height: 30vh;
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-around;
+    align-items:center
+    
+    
+}*/
+
+
+.container icon{
+    color:white;
+    height: 30vh;
+    width: 100%;
+    margin-top: 5rem !important;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    background-color: #333;
+    
+}
+   
+    
+    
+
+.menu {
+  cursor: pointer;
+  font-size: 10em;
+  background-color: #ccc;
+  border: 4px solid gray;
+  transition: all 0.5s ease;
+  border-radius: 8px;
+  padding: 10px;
+  
+}
+
+@media (max-width: 576px) {
+  .menu {
+    font-size: 4em;  
+    padding: 6px;
+  }
+}
+
+@media (max-width: 385px) {
+  .menu {
+    font-size: 3em !important; 
+    padding: 4px;
+  }
+}
+
+.menu:hover {
+  background: rgba(33, 150, 243, 0.2); /* léger fond bleu */
+  box-shadow: inset 2px 2px 15px rgba(33, 150, 243, 0.6);
+}
+
+
+
+ion-icon{
+    color: white;
+    
+    
+}
+
+.section{
+    padding: 20px;
+    border: 2px solid #aaa;
+    margin-top: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+
+/* conteneur principal */
+.calculator{
+   max-width: 320px;
+   width: 90%;
+   margin: 20px auto;
+   background: #f0f0f0;
+   padding: 15px;
+   border-radius: 10px;
+   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/*Ecran de la calculatrice */
+
+#display{
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: white;
+}
+
+/*Grille des boutons */ 
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* boutons */
+
+button{
+    padding:15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+
+button:hover{
+    background-color: #bbb;
+}
+
+#equal{
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    grid-column: span 4;  /*occupe toute la rangée à savoir 4 colonnes*/
+}
+
+#clear{
+    background-color: #f44336;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 480px){
+    .calculator{
+        padding: 10px;
+    }
+    button{
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    #display{
+        font-size: 20px;
+        height: 45px;
+
+    }
+}
+
+#formContainer {
+  display: flex;
+  flex-direction: column; /* pour empiler verticalement */
+  align-items: center;     /* centrer horizontalement */
+  justify-content: center; /* centrer verticalement si la hauteur le permet */
+  min-height: 300px;       /* hauteur pour centrer verticalement, à ajuster */
+  margin-top: 20px;
+}
+
+#distanceForm {
+  width: 100%;
+  max-width: 400px;
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center; /* centrer le texte dans le formulaire */
+}
+
+#result {
+  margin-top: 15px;
+  text-align: center;
+}
+
+input:invalid {
+  border: 2px solid red;
+}
+
+input:valid {
+    border: 2px solid green
+
+    
+}
+
+.input_empty{
+    border: 2px solid black;
+}
+input {
+  
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+#result p.error {
+  color: red;
+  font-weight: bold;
+}
+
+.ampoule {
+   
+    font-size: 4rem;
+    color: grey; /* éteinte au départ */
+    margin: 0 1rem;
+    margin-top: 2rem;
+    transition: color 0.3s;
+}
+.ampoules{
+    display: flex;
+    gap: 1rem;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+.jeu-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 100%;
+  flex-wrap: wrap; /* rend responsive sur petits écrans */
+  margin-top: 2rem;
+}
+.game-container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-height: 60vh;
+  background-color: #ccc;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.regle-container {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 1rem;
+  
+  border-radius: 10px;
+}
+
+.regle-container p{
+    font-size: 1.5rem;
+    text-align: justify;
+    
+}
+
+#amp_game{
+    font-size: 2rem;
+}
+
+.ampoule.allumee {
+  color: gold;
+}
+.ampoule.perdue {
+  color: black;
+}
+
+#message {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  min-height: 1.5rem;
+}
+
