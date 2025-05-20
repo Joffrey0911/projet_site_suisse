@@ -9,7 +9,7 @@ $user = 'root';
 $pass = '';
 
 
-$apiKey = 'apikey';
+$apiKey = '';
 
 
 
@@ -19,8 +19,9 @@ if (!isset($_POST['start']) || !isset($_POST['end'])) {
     exit;
 }
 
-$start = $_POST['start'];
-$end = $_POST['end'];
+$start = htmlspecialchars(trim($_POST['start']), ENT_QUOTES, 'UTF-8');
+$end = htmlspecialchars(trim($_POST['end']), ENT_QUOTES, 'UTF-8');
+
 
 // Fonction pour obtenir les coordonnées GPS à partir d'un nom de ville
 function getCoordinates($place, $apiKey) {
@@ -96,9 +97,11 @@ try {
         ':distance' => $distance,
         ':duration' => $duration
     ]);
+    
+    
     $duration_in_hours = $duration / 3600; // convertit secondes → heures
 
-        // arrondi à 2 décimales
+    
     $duration_text = round($duration_in_hours, 2) . ' h';
     echo json_encode([
         'distance_text' => round($distance / 1000, 2) . ' km',

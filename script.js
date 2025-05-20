@@ -106,49 +106,90 @@ function showSection(sectionId) {
 
 
 
- 
+
+  const startInput = document.getElementById('start');
+  const endInput = document.getElementById('end');
+  const resultDiv = document.getElementById('result'); 
+
+  document.getElementById('distanceForm').addEventListener('input', function(e) {
+      if (startInput.value.trim().length > 0) {
+    startInput.style.border = "2px solid green";
+   
+
+
+  } else {
+    startInput.style.border = "2px solid red";
     
+  }
+
+  if (endInput.value.trim().length > 0) {
+    endInput.style.border = '2px solid green';
+  } else {
+    endInput.style.border = '2px solid red';
+  
+  }
+});
+  
     
 
   document.getElementById('distanceForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const startInput = document.getElementById('start');
-    const endInput = document.getElementById('end');
-    const resultDiv = document.getElementById('result');
+     
+
+  
 
     const start = startInput.value.trim();
     const end = endInput.value.trim();
 
     let valid = true;
     resultDiv.innerHTML = ''; // Réinitialise le contenu
+   
     
-    
-  if (!startInput.value.trim()) {
-    startInput.classList.add('invalid');
-    startInput.classList.remove('valid');
-    valid = false;
+  
+  
+  if (startInput.value.trim().length > 0) {
+    startInput.style.border = "2px solid green";
   } else {
-    startInput.classList.remove('invalid');
-    startInput.classList.add('valid');
+    startInput.style.border = "2px solid red";
+    valid = false;
   }
+  
+  
+  
+   
 
-  // Validation end
-  if (!endInput.value.trim()) {
-    endInput.classList.add('invalid');
-    endInput.classList.remove('valid');
-    valid = false;
+  
+  if (endInput.value.trim().length > 0) {
+    endInput.style.border = '2px solid green';
   } else {
-    endInput.classList.remove('invalid');
-    endInput.classList.remove('invalid');
+    endInput.style.border = '2px solid red';
+    valid = false;
   }
+  
+  
 
     // Si un champ est vide, afficher une erreur et arrêter
     if (!valid) {
         resultDiv.innerHTML = '<p style="color: red;">Veuillez remplir tous les champs avant de soumettre.</p>';
-        return;
-    }
+        setTimeout(() => {
+            resultDiv.innerHTML = '';
+            startInput.value = '';
+            endInput.value = '';
+            startInput.style.border = '';
+            endInput.style.border = '';
+          }, 5000);
+          return;
+        }
+
+
+        
+
+
+  
 
     resultDiv.innerHTML = '<p>Calcul en cours...</p>';
+    
+    
 
     fetch('calculate.php', {
       method: 'POST',
@@ -159,15 +200,39 @@ function showSection(sectionId) {
     .then(data => {
       if(data.error){
         document.getElementById('result').innerText = 'Erreur : ' + data.error;
+        
+
+   
+
+
+        
       } else {
         document.getElementById('result').innerHTML = `
-          <p>Distance : ${data.distance_text}</p>
+          <p>La distance entre <strong>${start}</strong> et <strong>${end}</strong> est de : ${data.distance_text}</p>
           <p>Durée estimée : ${data.duration_text}</p>
         `;
+          setTimeout(() => {
+            resultDiv.innerHTML = '';
+            startInput.value = '';
+            endInput.value = '';
+            startInput.style.border = '';
+            endInput.style.border = '';
+          }, 5000);
+
+
+
+
       }
     })
     .catch(err => {
       document.getElementById('result').innerText = 'Erreur réseau ou serveur';
+      setTimeout(() => {
+            resultDiv.innerHTML = '';
+            startInput.value = '';
+            endInput.value = '';
+            startInput.style.border = '';
+            endInput.style.border = '';
+          }, 5000);
     });
   });
 

@@ -10,30 +10,33 @@ body{
 }
 
 .container_header{
-    height: 15vh;
+    height: 10vh;
     width: 100%;
+    background: rgba(33, 150, 243, 0.2);
     border-bottom: 3px solid white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: grey;
-    position: relative;
-     padding: 0 1rem; 
-    box-sizing: border-box;
+    
 }
 
 
 header h1{
-    
-    
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 4em;
-    margin: 0;
-    text-align: center;
+    font-size: 5.5em;
+    
 }
     
-
+    
+    
+@media (max-width: 920px){
+    header h1{
+        font-size: 5em;
+    }
+}  
+@media (max-width: 830px){
+    header h1{
+        font-size: 4em;
+    }
+}  
 @media (max-width: 640px){
     header h1{
         font-size: 3.2em;
@@ -50,17 +53,6 @@ header h1{
     }
 }
 
-.login{
-    height: 5em;
-    width: 5em;
-    border: 2px solid white;
-    position: absolute;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
-    
-    
-}
 
 
 /*.container{
@@ -92,7 +84,7 @@ header h1{
 
 .menu {
   cursor: pointer;
-  font-size: 10em;
+  font-size: 8em;
   background-color: #ccc;
   border: 4px solid gray;
   transition: all 0.5s ease;
@@ -190,14 +182,14 @@ button:hover{
 }
 
 #equal{
-    background-color: #4CAF50;
+    background-color: rgba(33, 150, 243, 0.5);
     color: white;
     font-weight: bold;
     grid-column: span 4;  /*occupe toute la rangée à savoir 4 colonnes*/
 }
 
 #clear{
-    background-color: #f44336;
+    background-color: rgba(164, 52, 45, 0.5);
     color: white;
     font-weight: bold;
 }
@@ -223,13 +215,16 @@ button:hover{
   flex-direction: column; /* pour empiler verticalement */
   align-items: center;     /* centrer horizontalement */
   justify-content: center; /* centrer verticalement si la hauteur le permet */
+  width: 25%;
+  min-width: 25%;
   min-height: 300px;       /* hauteur pour centrer verticalement, à ajuster */
   margin-top: 20px;
 }
 
+
 #distanceForm {
-  width: 100%;
-  max-width: 400px;
+  
+  max-width: 600px;
   background: #f0f0f0;
   padding: 20px;
   border-radius: 10px;
@@ -242,28 +237,25 @@ button:hover{
   text-align: center;
 }
 
-input:invalid {
-  border: 2px solid red;
-}
 
-input:valid {
-    border: 2px solid green
 
-    
-}
 
-.input_empty{
-    border: 2px solid black;
-}
 input {
-  
+  border: 2px solid black; 
+  padding: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
   padding: 8px;
   border-radius: 4px;
   font-size: 1rem;
-  width: 100%;
+  width: 60%;
   box-sizing: border-box;
+  
 }
 
+
+
+  
 
 #result p.error {
   color: red;
@@ -296,6 +288,8 @@ input {
   flex-wrap: wrap; /* rend responsive sur petits écrans */
   margin-top: 2rem;
 }
+
+
 .game-container {
   width: 30%;
   display: flex;
@@ -321,7 +315,7 @@ input {
 
 .regle-container p{
     font-size: 1.5rem;
-    text-align: justify;
+    text-align: center;
     
 }
 
@@ -342,3 +336,6 @@ input {
   min-height: 1.5rem;
 }
 
+#essayerBtn{
+  background: rgba(33, 150, 243, 0.5);
+}
